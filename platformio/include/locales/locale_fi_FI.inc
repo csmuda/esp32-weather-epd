@@ -125,9 +125,13 @@ const char *TXT_UNITS_PRES_MILLIBARS                = "mbar";
 const char *TXT_UNITS_PRES_ATMOSPHERES              = "atm";
 const char *TXT_UNITS_PRES_GRAMSPERSQUARECENTIMETER = "g/cm\262";
 const char *TXT_UNITS_PRES_POUNDSPERSQUAREINCH      = "lb/in\262";
-// UNITS - VISIBILITY DISTANCE
+// UNITS SYMBOLS - VISIBILITY DISTANCE
 const char *TXT_UNITS_DIST_KILOMETERS = "km";
 const char *TXT_UNITS_DIST_MILES      = "mi";
+// UNITS SYMBOLS - PRECIPITATION
+const char *TXT_UNITS_PRECIP_MILLIMETERS = "mm";
+const char *TXT_UNITS_PRECIP_CENTIMETERS = "cm";
+const char *TXT_UNITS_PRECIP_INCHES      = "in";
 
 // MISCELLANEOUS MESSAGES
 // Title Case
@@ -199,15 +203,15 @@ const std::vector<String> TERM_BIOHAZARD =
     {"biohazard", "biological hazard"};
 const std::vector<String> TERM_EARTHQUAKE =
     {"earthquake"};
-const std::vector<String> TERM_TSUNAMI =
-    {"tsunami", "surf"};
 const std::vector<String> TERM_FIRE =
     {"fire", "red flag"};
 const std::vector<String> TERM_HEAT =
     {"heat"};
 const std::vector<String> TERM_WINTER =
-    {"blizzard", "winter", "ice", "snow", "sleet", "cold", "freezing rain",
-     "wind chill", "freeze", "frost", "hail"};
+    {"blizzard", "winter", "ice", "icy", "snow", "sleet", "cold",
+     "freezing rain", "wind chill", "freeze", "frost", "hail"};
+const std::vector<String> TERM_TSUNAMI =
+    {"tsunami", "surf"};
 const std::vector<String> TERM_LIGHTNING =
     {"thunderstorm", "storm cell", "pulse storm", "squall line", "supercell",
      "lightning"};

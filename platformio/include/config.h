@@ -1,5 +1,5 @@
 /* Configuration option declarations for esp32-weather-epd.
- * Copyright (C) 2022-2024  Luke Marzen
+ * Copyright (C) 2022-2025  Luke Marzen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -64,6 +64,7 @@
 //   Estonian (Estonia)              et_EE
 //   Finnish (Finland)               fi_FI
 //   French (France)                 fr_FR
+//   Italiano (Italia)               it_IT
 //   Dutch (Belgium)                 nl_BE
 //   Portuguese (Brazil)             pt_BR
 #define LOCALE en_US
@@ -111,20 +112,20 @@
 // This can either be Probability of Precipitation (PoP) or hourly volume.
 //   Metric   : Millimeters
 //   Imperial : Inches
-// #define UNITS_HOURLY_PRECIP_POP
+#define UNITS_HOURLY_PRECIP_POP
 // #define UNITS_HOURLY_PRECIP_MILLIMETERS
 // #define UNITS_HOURLY_PRECIP_CENTIMETERS
-#define UNITS_HOURLY_PRECIP_INCHES
+// #define UNITS_HOURLY_PRECIP_INCHES
 
 // UNITS - PRECIPITATION (DAILY)
 // Measure of precipitation.
 // This can either be Probability of Precipitation (PoP) or daily volume.
 //   Metric   : Millimeters
 //   Imperial : Inches
-#define UNITS_DAILY_PRECIP_POP
+// #define UNITS_DAILY_PRECIP_POP
 // #define UNITS_DAILY_PRECIP_MILLIMETERS
 // #define UNITS_DAILY_PRECIP_CENTIMETERS
-// #define UNITS_DAILY_PRECIP_INCHES
+#define UNITS_DAILY_PRECIP_INCHES
 
 // Hypertext Transfer Protocol (HTTP)
 // HTTP
@@ -226,6 +227,13 @@
 //   2 : Smart (show only when precipitation is forecasted)
 #define DISPLAY_DAILY_PRECIP 2
 
+// HOURLY WEATHER ICONS
+// Weather icons to be displayed on the temperature and precipitation chart.
+// They are drawn at the the x-axis tick marks just above the temperature line
+//   0 : Disable
+//   1 : Enable
+#define DISPLAY_HOURLY_ICONS 1
+
 // ALERTS
 //   The handling of alerts is complex. Each country has a unique national alert
 //   system that receives alerts from many different government agencies. This
@@ -274,6 +282,7 @@ extern const uint8_t BME_ADDRESS;
 extern const char *WIFI_SSID;
 extern const char *WIFI_PASSWORD;
 extern const unsigned long WIFI_TIMEOUT;
+extern const unsigned HTTP_CLIENT_TCP_TIMEOUT;
 extern const String OWM_APIKEY;
 extern const String OWM_ENDPOINT;
 extern const String OWM_ONECALL_VERSION;
@@ -288,17 +297,18 @@ extern const char *REFRESH_TIME_FORMAT;
 extern const char *NTP_SERVER_1;
 extern const char *NTP_SERVER_2;
 extern const unsigned long NTP_TIMEOUT;
-extern const long SLEEP_DURATION;
+extern const int SLEEP_DURATION;
 extern const int BED_TIME;
 extern const int WAKE_TIME;
 extern const int HOURLY_GRAPH_MAX;
-extern const uint32_t MAX_BATTERY_VOLTAGE;
 extern const uint32_t WARN_BATTERY_VOLTAGE;
 extern const uint32_t LOW_BATTERY_VOLTAGE;
 extern const uint32_t VERY_LOW_BATTERY_VOLTAGE;
 extern const uint32_t CRIT_LOW_BATTERY_VOLTAGE;
 extern const unsigned long LOW_BATTERY_SLEEP_INTERVAL;
 extern const unsigned long VERY_LOW_BATTERY_SLEEP_INTERVAL;
+extern const uint32_t MAX_BATTERY_VOLTAGE;
+extern const uint32_t MIN_BATTERY_VOLTAGE;
 
 // CONFIG VALIDATION - DO NOT MODIFY
 #if !(  defined(DISP_BW_V2)  \
@@ -382,6 +392,9 @@ extern const unsigned long VERY_LOW_BATTERY_SLEEP_INTERVAL;
 #endif
 #if !(defined(DISPLAY_DAILY_PRECIP))
   #error Invalid configuration. DISPLAY_DAILY_PRECIP not defined.
+#endif
+#if !(defined(DISPLAY_HOURLY_ICONS))
+  #error Invalid configuration. DISPLAY_HOURLY_ICONS not defined.
 #endif
 #if !(defined(DISPLAY_ALERTS))
   #error Invalid configuration. DISPLAY_ALERTS not defined.
